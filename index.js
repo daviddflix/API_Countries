@@ -21,7 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const axios = require('axios').default;
 const { Actividad_Turistica, Country, Actividad } = require('./src/db');
-
+const {PORT} = process.env
 
 
 const dataInfo = async () => {
@@ -67,8 +67,8 @@ return data
         console.log(error)
     }
 
-    server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    server.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`); // eslint-disable-line no-console
   });
 })();
 
