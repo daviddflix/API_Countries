@@ -21,7 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const axios = require('axios').default;
 const { Actividad_Turistica, Country, Actividad } = require('./src/db');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 
 const dataInfo = async () => {
