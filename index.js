@@ -20,9 +20,9 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const axios = require('axios').default;
-const { Actividad_Turistica, Country, Actividad } = require('./src/db');
-const {PORT} = process.env
+const { Country } = require('./src/db');
 
+const port = process.env.PORT || 3001;
 
 const dataInfo = async () => {
   try {
@@ -56,7 +56,7 @@ return data
   await conn.sync({ force: true });
  
 
-     const info = await dataInfo() //info de la api
+     const info = await dataInfo() //Info de la api
  
     try {
         const data = await Country.findAll();// data de la tabla
@@ -64,20 +64,12 @@ return data
             await  Country.bulkCreate(info) // llena la Db
           }
     } catch (error) {
-        console.log(error)
+        console.log('error en index.js',error)
     }
 
-    server.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`); // eslint-disable-line no-console
+    server.listen(port, () => {
+    console.log(`listening on port ${port}`); // eslint-disable-line no-console
   });
 })();
 
-// // Syncing all the models at once.
-// conn.sync({ force: true }).then(() => {
-
-  
-//   server.listen(3001, () => {
-//     console.log('%s listening at 3001'); // eslint-disable-line no-console
-//   });
-// });
 
