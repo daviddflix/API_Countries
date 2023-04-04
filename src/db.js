@@ -12,7 +12,7 @@ const {
 
 
 
-const sequelize = new Sequelize(`postgresql://${USER}:${PASSWORD}@${HOST}:${PORT}/${DATABASE}`, {
+const sequelize = new Sequelize(`postgresql://${USER}:${PASSWORD}@${HOST}/${DATABASE}`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialectOptions: {
